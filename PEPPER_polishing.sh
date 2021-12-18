@@ -7,25 +7,25 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=bm502@cam.ac.uk
 
-BASE="/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta5"
+BASE=/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta5
 
-ASM="Shasta_Assembly/Assembly_trimmed.fasta"
-BAM="Polishing/PEPPER/Riirr_ONT_reads_ONT_asm.bam"
-SAMPLE_NAME="Riirr_G5"
+ASM=Shasta_Assembly/Assembly_trimmed.fasta
+BAM=Polishing/PEPPER/Riirr_ONT_reads_ONT_asm.bam
+SAMPLE_NAME=Riirr_G5
 
 # Set the number of CPUs to use
-THREADS="10"
+THREADS=10
 
 # Set up output directory
-OUTPUT_DIR="${BASE}/Polishing/PEPPER"
+OUTPUT_DIR=$BASE/Polishing/PEPPER
 
 # Run PEPPER-Margin-DeepVariant
 singularity exec --bind /usr/lib/locale/ \
 pepper_deepvariant_r0.4.sif \
 run_pepper_margin_deepvariant polish_assembly \
--b "${BAM}" \
--f "${BASE}/${ASM}" \
--o "${OUTPUT_DIR}" \
--t ${THREADS} \
--s ${SAMPLE_NAME} \
+-b $BAM \
+-f $BASE/$ASM \
+-o $OUTPUT_DIR \
+-t $THREADS \
+-s $SAMPLE_NAME \
 --ont
