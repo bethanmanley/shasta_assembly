@@ -11,7 +11,7 @@
 FASTQ=$1
 OUTPUT_DIR=$2
 
-BASE="/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta_5"
-PORECHOP="/mnt/home1/miska/bm502/Apps/Porechop/porechop-runner.py"
+BASE=/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta_5
+PORECHOP=/mnt/home1/miska/bm502/Apps/Porechop/porechop-runner.py
 
-$PORECHOP -i "${BASE}"/$1 -o $2
+$PORECHOP -i $BASE/$1 -o $2
