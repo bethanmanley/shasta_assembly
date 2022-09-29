@@ -7,6 +7,14 @@ INPUT_DIR="${BASE}/Polishing"
 bcftools view --exclude 'GT="het"' G5Riirr_S5_deepvariant_pepper_polished.vcf > G5Riirr_S5_deepvariant_pepper_polished_hetremoved.vcf
 
 
+# Before using merfin, use meryl to construct k-mer db
+
+meryl count k=18.5 \
+           "${BASE}"/Trimmed_reads/Seq_run1trimmed.fastq \
+           "${BASE}"/Trimmed_reads/Seq_run2_trimmed.fastq \
+           "${BASE}"/Trimmed_reads/Seq_run3trimmed.fastq output \
+           "${BASE}"/shasta0.5/Polishing/ONT_G5_Riirr.meryl
+
 # Run merfin
 
 Apps/merfin/build/bin/merfin -polish                               \
@@ -22,9 +30,9 @@ tabix -p vcf merfin.polish.vcf.gz
 
 # Apply the VCF to the assembly
 
-bcftools consensus \
-  -f "${INPUT_DIR}"/PEPPER/hap_py_output_dir/hap2_PEPPER_polished.fasta \
-  -H 2 \
-  -s "default" \
-  -o Guppy_5_Riirr/shasta0.5/Polishing/merfin/G5Riirr_S5_PEPPER_deepvariant_polished.fasta \
-  Guppy_5_Riirr/shasta0.5/Polishing/merfin.polish.vcf.gz 
+bcftools consensus \ 
+           -f "${INPUT_DIR}"/PEPPER/hap_py_output_dir/hap2_PEPPER_polished.fasta \
+           -H 2 \
+           -s "default" \
+           -o "${INPUT_DIR}"/merfin/G5Riirr_S5_PEPPER_deepvariant_polished.fasta \
+           "${INPUT_DIR}"/merfin.polish.vcf.gz 
