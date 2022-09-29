@@ -20,4 +20,4 @@ bcftools consensus \
   -H 2 \
   -s "default" \
   -o Guppy_5_Riirr/shasta0.5/Polishing/merfin/G5Riirr_S5_PEPPER_deepvariant_polished.fasta \
-  Guppy_5_Riirr/shasta0.5/Polishing/merfin.polish.vcf.gz &
+  Guppy_5_Riirr/shasta0.5/Polishing/merfin.polish.vcf.gz 
