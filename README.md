@@ -7,5 +7,4 @@ De novo Shasta (shasta-Linux-0.8.0) assembly of R. irregularis using ONT reads. 
 
 - Illumina reads from Maeda et al. (2018) aligned to the PEPPER-DeepVariant polished genome using BWA-MEM 
 - Variants called using DeepVariant
-- Meryl used to construbt k-mer db
-- Merfin used to polish variants
+- Meryl used to construbt k-mer db and Merfin used to polish variants
