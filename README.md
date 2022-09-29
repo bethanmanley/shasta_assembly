@@ -1,9 +1,8 @@
 # shasta_assembly
-Assembly of R. irregularis ONT reads using Shasta, followed by polishing with ONT reads using PEPPER and with publically-available Illumina reads using BWA. 
+De novo Shasta (shasta-Linux-0.8.0) assembly of R. irregularis using ONT reads. followed by polishing with ONT reads using PEPPER and with publically-available Illumina reads using BWA. 
 
-ONT fastq files to be mapped to the Shasta files using Minimap2, followed by PEPPER Polishing.
-
-SNP calls applied to assembly using hap.py
-
-Illumina reads aligned using BWA-MEM, followed by polishing with Deepvariant.
-
+- Shasta assembly carried out using 9Gb of Rhizophagus irregularis Nanopore reads
+- First round polishing carried out using PEPPER following alignnent of these same Nanopore reads to the raw genome using Minimap2
+- Variants called and applied to the raw assembly using hap.py
+- Illumina reads from Maeda et al. (2018) aligned to the PEPPER-DeepVariant polished genome using BWA-MEM
+- Variants called and applied to the raw assembly using DeepVariant
