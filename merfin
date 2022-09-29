@@ -1,0 +1,23 @@
+BASE="/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta5"
+INPUT_DIR="${BASE}/Polishing"
+
+
+Apps/merfin/build/bin/merfin -polish                               \
+           -sequence "${INPUT_DIR}"/PEPPER/hap_py_output_dir/hap2_PEPPER_polished.fasta       \
+           -readmers Maeda_Illumina/Rirregularis.Illumina.meryl      \
+           -peak 10.8                        \
+           -vcf "${INPUT_DIR}"/DeepVariant/G5Riirr_S5_deepvariant_pepper_polished_hetremoved.vcf \
+           -output Guppy_5_Riirr/shasta5/Polishing/merfin
+
+
+bgzip merfin.polish.vcf
+tabix -p vcf merfin.polish.vcf.gz
+
+# Apply the VCF to the assembly
+
+bcftools consensus \
+  -f "${INPUT_DIR}"/PEPPER/hap_py_output_dir/hap2_PEPPER_polished.fasta \
+  -H 2 \
+  -s "default" \
+  -o Guppy_5_Riirr/shasta0.5/Polishing/merfin/G5Riirr_S5_PEPPER_deepvariant_polished.fasta \
+  Guppy_5_Riirr/shasta0.5/Polishing/merfin.polish.vcf.gz &
