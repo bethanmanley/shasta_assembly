@@ -2,6 +2,13 @@ BASE="/mnt/home1/miska/bm502/Guppy_5_Riirr/shasta5"
 INPUT_DIR="${BASE}/Polishing"
 
 
+## First remove het calls - advice and code for Merfin from https://github.com/arangrhie/merfin/wiki/Best-practices-for-Merfin
+
+bcftools view --exclude 'GT="het"' G5Riirr_S5_deepvariant_pepper_polished.vcf > G5Riirr_S5_deepvariant_pepper_polished_hetremoved.vcf
+
+
+# Run merfin
+
 Apps/merfin/build/bin/merfin -polish                               \
            -sequence "${INPUT_DIR}"/PEPPER/hap_py_output_dir/hap2_PEPPER_polished.fasta       \
            -readmers Maeda_Illumina/Rirregularis.Illumina.meryl      \
