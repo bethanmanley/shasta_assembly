@@ -29,3 +29,9 @@ run_pepper_margin_deepvariant polish_assembly \
 -t $THREADS \
 -s $SAMPLE_NAME \
 --ont
+
+# This generates 2 vcfs, one per haplotype:
+# HAP1_VCF=PEPPER_MARGIN_DEEPVARIANT_ASM_POLISHED_HAP1.vcf.gz
+# HAP2_VCF=PEPPER_MARGIN_DEEPVARIANT_ASM_POLISHED_HAP2.vcf.gz
+
+## Next run hap.py
